@@ -71,10 +71,10 @@ loaders:
   label_internal_path: label
   # paths to the training datasets
   train_path:
-    - 'resources/random_label3D.h5'
+    - 'resources/random_label4D.h5'
   # paths to the validation datasets
   val_path:
-    - 'resources/random_label3D.h5'
+    - 'resources/random_label4D.h5'
   # how many subprocesses to use for data loading
   num_workers: 8
   # data transformations/augmentations
