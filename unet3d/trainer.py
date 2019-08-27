@@ -154,7 +154,7 @@ class UNet3DTrainer:
         self.model.train()
 
         for i, t in enumerate(train_loader):
-            self.logger.info(
+            # self.logger.info(
                 # f'Training iteration {self.num_iterations}. Batch {i}. Epoch [{self.num_epoch}/{self.max_num_epochs - 1}]')
 
             input, target, weight = self._split_training_batch(t)
