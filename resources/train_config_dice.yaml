@@ -58,13 +58,15 @@ lr_scheduler:
 # data loaders configuration
 loaders:
   # train patch size given to the network (adapt to fit in your GPU mem, generally the bigger patch the better)
-  train_patch: [32, 64, 64]
+  #oryginalnie 32x64x64
+  train_patch: [64, 128, 128] 
   # train stride between patches
-  train_stride: [8, 16, 16]
+  #oryginalnie 8x16x16
+  train_stride: [16, 32, 32]
   # validation patch (can be bigger than train patch since there is no backprop)
-  val_patch: [32, 64, 64]
+  val_patch: [64, 128, 128]
   # validation stride (validation patches doesn't need to overlap)
-  val_stride: [32, 64, 64]
+  val_stride: [64, 128, 128]
   # path to the raw data within the H5
   raw_internal_path: raw
   # path to the the label data withtin the H5
@@ -81,32 +83,32 @@ loaders:
   transformer:
     train:
       raw:
-        - name: Normalize
-        - name: RandomFlip
-        - name: RandomRotate90
-        - name: RandomRotate
+        # - name: Normalize
+        # - name: RandomFlip
+        # - name: RandomRotate90
+        # - name: RandomRotate
           # rotate only in ZY only
-          axes: [[2, 1]]
-          angle_spectrum: 15
-          mode: reflect
-        - name: ElasticDeformation
-          spline_order: 3
-        - name: RandomContrast
-        - name: ToTensor
-          expand_dims: true
+          # axes: [[2, 1]]
+          # angle_spectrum: 15
+          # mode: reflect
+        # - name: ElasticDeformation
+          # spline_order: 3
+        # - name: RandomContrast
+        # - name: ToTensor
+          # expand_dims: true
       label:
-        - name: RandomFlip
-        - name: RandomRotate90
-        - name: RandomRotate
+        # - name: RandomFlip
+        # - name: RandomRotate90
+        # - name: RandomRotate
           # rotate only in ZY only
-          axes: [[2, 1]]
-          angle_spectrum: 15
-          mode: reflect
-        - name: ElasticDeformation
-          spline_order: 0
-        - name: ToTensor
-          expand_dims: true
-          dtype: 'long'
+          # axes: [[2, 1]]
+          # angle_spectrum: 15
+          # mode: reflect
+        # - name: ElasticDeformation
+          # spline_order: 0
+        # - name: ToTensor
+          # expand_dims: true
+          # dtype: 'long'
     test:
       raw:
         - name: Normalize
