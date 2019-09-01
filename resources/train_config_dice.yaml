@@ -59,11 +59,11 @@ lr_scheduler:
 loaders:
   # train patch size given to the network (adapt to fit in your GPU mem, generally the bigger patch the better)
   #  train_patch: [32, 64, 64]
-  train_patch: [128, 256, 256]
+  train_patch: [64, 128, 128]
   # train stride between patches
   train_stride: [16, 32, 32]
   # validation patch (can be bigger than train patch since there is no backprop)
-  val_patch: [128, 256, 256]
+  val_patch: [64, 128, 128]
   # validation stride (validation patches doesn't need to overlap)
   val_stride: [64, 128, 128]
   # path to the raw data within the H5
