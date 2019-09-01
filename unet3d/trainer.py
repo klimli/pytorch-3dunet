@@ -36,12 +36,12 @@ class UNet3DTrainer:
         num_iterations (int): useful when loading the model from the checkpoint
         num_epoch (int): useful when loading the model from the checkpoint
     """
-
+    #moje zmiany: validate_iters = 10 (bylo None)
     def __init__(self, model, optimizer, lr_scheduler, loss_criterion,
                  eval_criterion, device, loaders, checkpoint_dir,
                  max_num_epochs=100, max_num_iterations=1e5,
                  validate_after_iters=100, log_after_iters=100,
-                 validate_iters=None, num_iterations=1, num_epoch=0,
+                 validate_iters=10, num_iterations=1, num_epoch=0,
                  eval_score_higher_is_better=True, best_eval_score=None,
                  logger=None):
         if logger is None:
