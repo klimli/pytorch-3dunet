@@ -23,11 +23,11 @@ trainer:
   # path to latest checkpoint; if provided the training will be resumed from that checkpoint
   resume: null
   # how many iterations between validations
-  validate_after_iters: 20
+  validate_after_iters: 200
   # how many iterations between tensorboard logging
-  log_after_iters: 20
+  log_after_iters: 200
   # max number of epochs
-  epochs: 2
+  epochs: 1
   # max number of iterations
   iters: 100000
   # model with higher eval score is considered better
