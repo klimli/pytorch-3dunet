@@ -12,6 +12,7 @@ from unet3d.model import get_model
 from unet3d.trainer import UNet3DTrainer
 from unet3d.utils import get_logger
 from unet3d.utils import get_number_of_learnable_parameters
+from unet3d.utils import find_maximum_patch_size
 
 
 def _create_trainer(config, model, optimizer, lr_scheduler, loss_criterion, eval_criterion, loaders, logger):
@@ -95,6 +96,9 @@ def main():
     model = model.to(config['device'])
     # Log the number of learnable parameters
     logger.info(f'Number of learnable params {get_number_of_learnable_parameters(model)}')
+
+    #see how big patch can be 
+    logger.info(find_maximum_patch_size(model,config['device'])
 
     # Create loss criterion
     loss_criterion = get_loss_criterion(config)
