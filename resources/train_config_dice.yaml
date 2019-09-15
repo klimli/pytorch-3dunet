@@ -27,9 +27,9 @@ trainer:
   # how many iterations between tensorboard logging
   log_after_iters: 20
   # max number of epochs
-  epochs: 50
+  epochs: 1
   # max number of iterations
-  iters: 100000
+  iters: 1000
   # model with higher eval score is considered better
   eval_score_higher_is_better: True
 # optimizer configuration
@@ -71,10 +71,10 @@ loaders:
   label_internal_path: label
   # paths to the training datasets
   train_path:
-    - 'resources/random_label3D.h5'
+    - 'resources/P3B3.h5'
   # paths to the validation datasets
   val_path:
-    - 'resources/random_label3D.h5'
+    - 'resources/P3B3.h5'
   # how many subprocesses to use for data loading
   num_workers: 8
   # data transformations/augmentations
