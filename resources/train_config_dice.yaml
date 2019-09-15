@@ -23,9 +23,9 @@ trainer:
   # path to latest checkpoint; if provided the training will be resumed from that checkpoint
   resume: null
   # how many iterations between validations
-  validate_after_iters: 200
+  validate_after_iters: 20
   # how many iterations between tensorboard logging
-  log_after_iters: 200
+  log_after_iters: 20
   # max number of epochs
   epochs: 1
   # max number of iterations
@@ -58,14 +58,13 @@ lr_scheduler:
 # data loaders configuration
 loaders:
   # train patch size given to the network (adapt to fit in your GPU mem, generally the bigger patch the better)
-  #  train_patch: [32, 64, 64]
-  train_patch: [64, 128, 128]
+  train_patch: [32, 64, 64]
   # train stride between patches
-  train_stride: [16, 32, 32]
+  train_stride: [8, 16, 16]
   # validation patch (can be bigger than train patch since there is no backprop)
-  val_patch: [64, 128, 128]
+  val_patch: [32, 64, 64]
   # validation stride (validation patches doesn't need to overlap)
-  val_stride: [64, 128, 128]
+  val_stride: [32, 64, 64]
   # path to the raw data within the H5
   raw_internal_path: raw
   # path to the the label data withtin the H5
