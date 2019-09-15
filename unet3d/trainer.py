@@ -85,8 +85,8 @@ class UNet3DTrainer:
                         logger=None):
         logger.info(f"Loading checkpoint '{checkpoint_path}'...")
         state = utils.load_checkpoint(checkpoint_path, model, optimizer)
-        logger.info(
-            f"Checkpoint loaded. Epoch: {state['epoch']}. Best val score: {state['best_eval_score']}. Num_iterations: {state['num_iterations']}")
+        # logger.info(
+        #     f"Checkpoint loaded. Epoch: {state['epoch']}. Best val score: {state['best_eval_score']}. Num_iterations: {state['num_iterations']}")
         checkpoint_dir = os.path.split(checkpoint_path)[0]
         return cls(model, optimizer, lr_scheduler,
                    loss_criterion, eval_criterion,
@@ -155,7 +155,7 @@ class UNet3DTrainer:
 
         for i, t in enumerate(train_loader):
             # self.logger.info(
-                # f'Training iteration {self.num_iterations}. Batch {i}. Epoch [{self.num_epoch}/{self.max_num_epochs - 1}]')
+            #     f'Training iteration {self.num_iterations}. Batch {i}. Epoch [{self.num_epoch}/{self.max_num_epochs - 1}]')
 
             input, target, weight = self._split_training_batch(t)
 
@@ -221,7 +221,7 @@ class UNet3DTrainer:
             self.model.eval()
             with torch.no_grad():
                 for i, t in enumerate(val_loader):
-                    # self.logger.info(f'Validation iteration {i}')
+                    self.logger.info(f'Validation iteration {i}')
 
                     input, target, weight = self._split_training_batch(t)
 
