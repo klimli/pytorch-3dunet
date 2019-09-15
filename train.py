@@ -12,7 +12,7 @@ from unet3d.model import get_model
 from unet3d.trainer import UNet3DTrainer
 from unet3d.utils import get_logger
 from unet3d.utils import get_number_of_learnable_parameters
-from unet3d.utils import find_maximum_patch_size
+# from unet3d.utils import find_maximum_patch_size
 
 
 def _create_trainer(config, model, optimizer, lr_scheduler, loss_criterion, eval_criterion, loaders, logger):
