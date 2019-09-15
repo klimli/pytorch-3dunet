@@ -97,8 +97,8 @@ def main():
     # Log the number of learnable parameters
     logger.info(f'Number of learnable params {get_number_of_learnable_parameters(model)}')
 
-    #see how big patch can be 
-    logger.info(find_maximum_patch_size(model,config['device']))
+    #see how big patch can be - doesnt work
+    # logger.info(find_maximum_patch_size(model,config['device']))
 
     # Create loss criterion
     loss_criterion = get_loss_criterion(config)
