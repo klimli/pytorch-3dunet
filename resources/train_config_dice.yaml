@@ -71,10 +71,10 @@ loaders:
   label_internal_path: label
   # paths to the training datasets
   train_path:
-    - 'resources/P3B3_clipped_only.h5'
+    - 'resources/P3B3_clipped_correctly.h5'
   # paths to the validation datasets
   val_path:
-    - 'resources/P3B3_clipped_only.h5'
+    - 'resources/P3B3_clipped_correctly.h5'
   # how many subprocesses to use for data loading
   num_workers: 8
   # data transformations/augmentations
@@ -83,30 +83,30 @@ loaders:
       raw:
         - name: Normalize
         - name: RandomFlip
-        # - name: RandomRotate90
-        # - name: RandomRotate
+        - name: RandomRotate90
+        - name: RandomRotate
         #   # rotate only in ZY only
-        #   axes: [[2, 1]]
-        #   angle_spectrum: 15
-        #   mode: reflect
-        # - name: ElasticDeformation
-        #   spline_order: 3
-        # - name: RandomContrast
+          axes: [[2, 1]]
+          angle_spectrum: 15
+          mode: reflect
+        - name: ElasticDeformation
+          spline_order: 3
+        - name: RandomContrast
         - name: ToTensor
-        #   expand_dims: true
+          expand_dims: true
       label:
         - name: RandomFlip
-        # - name: RandomRotate90
-        # - name: RandomRotate
-        #   # rotate only in ZY only
-        #   axes: [[2, 1]]
-        #   angle_spectrum: 15
-        #   mode: reflect
-        # - name: ElasticDeformation
-        #   spline_order: 0
+        - name: RandomRotate90
+        - name: RandomRotate
+          # rotate only in ZY only
+          axes: [[2, 1]]
+          angle_spectrum: 15
+          mode: reflect
+        - name: ElasticDeformation
+          spline_order: 0
         - name: ToTensor
-        #   expand_dims: true
-        #   dtype: 'long'
+          expand_dims: true
+          dtype: 'long'
     test:
       raw:
         - name: Normalize
