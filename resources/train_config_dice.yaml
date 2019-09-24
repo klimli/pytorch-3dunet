@@ -83,30 +83,30 @@ loaders:
       raw:
         - name: Normalize
         - name: RandomFlip
-        - name: RandomRotate90
-        - name: RandomRotate
-          # rotate only in ZY only
-          axes: [[2, 1]]
-          angle_spectrum: 15
-          mode: reflect
-        - name: ElasticDeformation
-          spline_order: 3
-        - name: RandomContrast
+        # - name: RandomRotate90
+        # - name: RandomRotate
+        #   # rotate only in ZY only
+        #   axes: [[2, 1]]
+        #   angle_spectrum: 15
+        #   mode: reflect
+        # - name: ElasticDeformation
+        #   spline_order: 3
+        # - name: RandomContrast
         - name: ToTensor
-          expand_dims: true
+        #   expand_dims: true
       label:
         - name: RandomFlip
-        - name: RandomRotate90
-        - name: RandomRotate
-          # rotate only in ZY only
-          axes: [[2, 1]]
-          angle_spectrum: 15
-          mode: reflect
-        - name: ElasticDeformation
-          spline_order: 0
+        # - name: RandomRotate90
+        # - name: RandomRotate
+        #   # rotate only in ZY only
+        #   axes: [[2, 1]]
+        #   angle_spectrum: 15
+        #   mode: reflect
+        # - name: ElasticDeformation
+        #   spline_order: 0
         - name: ToTensor
-          expand_dims: true
-          dtype: 'long'
+        #   expand_dims: true
+        #   dtype: 'long'
     test:
       raw:
         - name: Normalize
