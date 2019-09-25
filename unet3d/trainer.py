@@ -203,6 +203,8 @@ class UNet3DTrainer:
                 self._log_params()
                 print('params logged')
                 self._log_images(input, target, output)
+                import pdb; pdb.set_trace()
+
                 print('imgs logged')
 
             if self.max_num_iterations < self.num_iterations:
