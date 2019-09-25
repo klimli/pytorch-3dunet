@@ -202,8 +202,9 @@ class UNet3DTrainer:
                 self._log_stats('train', train_losses.avg, train_eval_scores.avg)
                 self._log_params()
                 print('params logged')
-                self._log_images(input, target, output)
                 import pdb; pdb.set_trace()
+                self._log_images(input, target, output)
+                # import pdb; pdb.set_trace()
 
                 print('imgs logged')
 
