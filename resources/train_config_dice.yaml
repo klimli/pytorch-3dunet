@@ -29,7 +29,7 @@ trainer:
   # max number of epochs
   epochs: 1
   # max number of iterations
-  iters: 1000
+  iters: 5000
   # model with higher eval score is considered better
   eval_score_higher_is_better: True
 # optimizer configuration
@@ -71,10 +71,10 @@ loaders:
   label_internal_path: label
   # paths to the training datasets
   train_path:
-    - 'resources/P3B3_clipped_correctly.h5'
+    - 'resources/P3B3_WC.h5'
   # paths to the validation datasets
   val_path:
-    - 'resources/P3B3_clipped_correctly.h5'
+    - 'resources/P3B3_WC.h5'
   # how many subprocesses to use for data loading
   num_workers: 8
   # data transformations/augmentations
