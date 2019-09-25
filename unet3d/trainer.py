@@ -201,12 +201,12 @@ class UNet3DTrainer:
                     f'Training stats. Loss: {train_losses.avg}. Evaluation score: {train_eval_scores.avg}')
                 self._log_stats('train', train_losses.avg, train_eval_scores.avg)
                 self._log_params()
-                print('params logged')
-                # import pdb; pdb.set_trace()
-                self._log_images(input, target, output)
-                # import pdb; pdb.set_trace()
 
-                print('imgs logged')
+
+                self._log_images(input, target, output)
+
+
+
 
             if self.max_num_iterations < self.num_iterations:
                 self.logger.info(
@@ -367,7 +367,9 @@ class UNet3DTrainer:
 
     @staticmethod
     def _normalize_img(img):
-        return ((img - np.min(img))+1) / (np.ptp(img)+1)
+        return ((img - np.min(img))+1) / (np.ptp(img)+1)  # those +1+1 remove warning about NaN in the input
+                                                        #without them np.ptp(img) can output 0 when there is only background on the input image
+                                                        # klimli
 
     @staticmethod
     def _batch_size(input):
