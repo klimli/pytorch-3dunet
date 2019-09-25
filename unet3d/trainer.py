@@ -202,7 +202,7 @@ class UNet3DTrainer:
                 self._log_stats('train', train_losses.avg, train_eval_scores.avg)
                 self._log_params()
                 print('params logged')
-                import pdb; pdb.set_trace()
+                # import pdb; pdb.set_trace()
                 self._log_images(input, target, output)
                 # import pdb; pdb.set_trace()
 
@@ -367,7 +367,7 @@ class UNet3DTrainer:
 
     @staticmethod
     def _normalize_img(img):
-        return (img - np.min(img)) / np.ptp(img)
+        return ((img - np.min(img))+1) / (np.ptp(img)+1)
 
     @staticmethod
     def _batch_size(input):
