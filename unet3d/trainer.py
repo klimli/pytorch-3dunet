@@ -201,7 +201,9 @@ class UNet3DTrainer:
                     f'Training stats. Loss: {train_losses.avg}. Evaluation score: {train_eval_scores.avg}')
                 self._log_stats('train', train_losses.avg, train_eval_scores.avg)
                 self._log_params()
+                print('params logged')
                 self._log_images(input, target, output)
+                print('imgs logged')
 
             if self.max_num_iterations < self.num_iterations:
                 self.logger.info(
