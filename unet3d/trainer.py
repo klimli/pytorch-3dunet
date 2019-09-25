@@ -367,7 +367,7 @@ class UNet3DTrainer:
 
     @staticmethod
     def _normalize_img(img):
-        return ((img - np.min(img))+1) / (np.ptp(img)+1)  # those +1+1 remove warning about NaN in the input
+        return ((img - np.min(img))) / (np.ptp(img)+1e-6)  # those +1+1 remove warning about NaN in the input
                                                         #without them np.ptp(img) can output 0 when there is only background on the input image
                                                         # klimli
 
