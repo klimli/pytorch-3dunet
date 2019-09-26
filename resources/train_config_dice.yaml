@@ -35,7 +35,7 @@ trainer:
 # optimizer configuration
 optimizer:
   # initial learning rate
-  learning_rate: 0.002
+  learning_rate: 0.0002
   # weight decay
   weight_decay: 0.0001
 # loss function configuration
@@ -71,10 +71,13 @@ loaders:
   label_internal_path: label
   # paths to the training datasets
   train_path:
-    - 'resources/P3B3_WC.h5'
+    - 'resources/P3B3.h5'
+    - 'resources/P30B30.h5'
   # paths to the validation datasets
   val_path:
-    - 'resources/P3B3_WC.h5'
+    - 'resources/P3B3.h5'
+    - 'resources/P30B30.h5'
+
   # how many subprocesses to use for data loading
   num_workers: 8
   # data transformations/augmentations
