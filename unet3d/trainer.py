@@ -170,9 +170,8 @@ class UNet3DTrainer:
             print('torch.std() method: ', torch.std(input))
             print('max and min: ', torch.max(input),torch.min(input))
 
-            
+
             if torch.std(input).item() > 1.4901e-07:
-                # print('std soooo small')
                 train_losses.update(loss.item(), self._batch_size(input))
 
                 # compute gradients and update parameters
@@ -234,7 +233,6 @@ class UNet3DTrainer:
         val_losses = utils.RunningAverage()
         val_scores = utils.RunningAverage()
 
-        print('val_loader size, cokolwiek: ', val_loader)
 
         try:
             # set the model in evaluation mode; final_activation doesn't need to be called explicitly
@@ -351,8 +349,7 @@ class UNet3DTrainer:
             else:
                 img_sources[name] = batch.data.cpu().numpy()
 
-        # print("img source- lista patchy? : ", img_sources['inputs'])
-        # print('img source inputs len: ', len(img_sources))
+
 
         for name, batch in img_sources.items():
             for tag, image in self._images_from_batch(name, batch):
@@ -362,7 +359,7 @@ class UNet3DTrainer:
         tag_template = '{}/batch_{}/channel_{}/slice_{}'
 
         tagged_images = []
-        tagged_images_std = []
+
 
         if batch.ndim == 5:
             # NCDHW
@@ -372,7 +369,6 @@ class UNet3DTrainer:
                     tag = tag_template.format(name, batch_idx, channel_idx, slice_idx)
                     img = batch[batch_idx, channel_idx, slice_idx, ...]
                     tagged_images.append((tag, self._normalize_img(img)))
-                    tagged_images_std.append(np.std(img))
 
         else:
             # batch has no channel dim: NDHW
@@ -381,14 +377,11 @@ class UNet3DTrainer:
                 tag = tag_template.format(name, batch_idx, 0, slice_idx)
                 img = batch[batch_idx, slice_idx, ...]
                 tagged_images.append((tag, self._normalize_img(img)))
-                tagged_images_std.append(np.std(img))
-        print(tagged_images_std)
         return tagged_images
 
     @staticmethod
     def _normalize_img(img):
-        # print("image std: ",np.std(img))
-        # print('img shape: ',img.shape)
+
 
         return ((img - np.min(img))) / (np.ptp(img)+1e-6)  # those +1+1 remove warning about NaN in the input
                                                         #without them np.ptp(img) can output 0 when there is only background on the input image
