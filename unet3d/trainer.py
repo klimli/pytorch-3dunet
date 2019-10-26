@@ -161,23 +161,18 @@ class UNet3DTrainer:
             input, target, weight = self._split_training_batch(t)
 
             output, loss = self._forward_pass(input, target, weight)
-            # print("training input shape: ",input.shape)
-            # print("training input std?: ", input.std(dim=1))
-            # print("training input mean?: ", input.mean(dim=1))
-            # print("training input std?: ", input.std)
-            # print('Tensor flatten: ',input.reshape(-1))
-            # print('Tensor flatten std: ',input.reshape(-1).std(dim=-1))
+
             print('torch.std() method: ', torch.std(input))
             print('max and min: ', torch.max(input),torch.min(input))
 
 
-            if torch.std(input).item() > 1.4901e-07:
-                train_losses.update(loss.item(), self._batch_size(input))
+            # if torch.std(input).item() > 1.4901e-07:
+            train_losses.update(loss.item(), self._batch_size(input))
 
-                # compute gradients and update parameters
-                self.optimizer.zero_grad()
-                loss.backward()
-                self.optimizer.step()
+            # compute gradients and update parameters
+            self.optimizer.zero_grad()
+            loss.backward()
+            self.optimizer.step()
 
             if self.num_iterations % self.validate_after_iters == 0:
                 # evaluate on validation set
@@ -381,12 +376,10 @@ class UNet3DTrainer:
 
     @staticmethod
     def _normalize_img(img):
-
-
-        return ((img - np.min(img))) / (np.ptp(img)+1e-6)  # those +1+1 remove warning about NaN in the input
+        # return ((img - np.min(img))) / (np.ptp(img)+1e-6)  # those +1+1 remove warning about NaN in the input
                                                         #without them np.ptp(img) can output 0 when there is only background on the input image
                                                         # klimli
-
+        return img
     @staticmethod
     def _batch_size(input):
         if isinstance(input, list) or isinstance(input, tuple):
