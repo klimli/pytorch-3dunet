@@ -346,6 +346,7 @@ class UNet3DTrainer:
         tag_template = '{}/batch_{}/channel_{}/slice_{}'
 
         tagged_images = []
+        tagged_images_std = []
 
         if batch.ndim == 5:
             # NCDHW
@@ -355,6 +356,8 @@ class UNet3DTrainer:
                     tag = tag_template.format(name, batch_idx, channel_idx, slice_idx)
                     img = batch[batch_idx, channel_idx, slice_idx, ...]
                     tagged_images.append((tag, self._normalize_img(img)))
+                    tagged_images_std.append(np.std(img))
+
         else:
             # batch has no channel dim: NDHW
             slice_idx = batch.shape[1] // 2  # get the middle slice
@@ -362,7 +365,8 @@ class UNet3DTrainer:
                 tag = tag_template.format(name, batch_idx, 0, slice_idx)
                 img = batch[batch_idx, slice_idx, ...]
                 tagged_images.append((tag, self._normalize_img(img)))
-
+                tagged_images_std.append(np.std(img))
+        print(tagged_images_std)
         return tagged_images
 
     @staticmethod
