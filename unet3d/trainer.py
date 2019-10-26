@@ -223,6 +223,8 @@ class UNet3DTrainer:
         val_losses = utils.RunningAverage()
         val_scores = utils.RunningAverage()
 
+        print('val_loader size, cokolwiek: ', val_loader)
+
         try:
             # set the model in evaluation mode; final_activation doesn't need to be called explicitly
             self.model.eval()
