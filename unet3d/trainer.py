@@ -152,7 +152,7 @@ class UNet3DTrainer:
 
         # sets the model in training mode
         self.model.train()
-
+        torch_stds = []
         for i, t in enumerate(train_loader):
             if i%100==0:
                 self.logger.info(
@@ -170,6 +170,7 @@ class UNet3DTrainer:
             # print('Tensor flatten std: ',input.reshape(-1).std(dim=-1))
             print('torch.std() method: ', torch.std(input))
             print('max and min: ', torch.max(input),torch.min(input))
+            torch_stds.append(torch.std(input))
 
 
             train_losses.update(loss.item(), self._batch_size(input))
@@ -221,6 +222,8 @@ class UNet3DTrainer:
                 self.logger.info(
                     f'Maximum number of iterations {self.max_num_iterations} exceeded. Finishing training...')
                 return True
+
+            print(torch_stds)
 
             self.num_iterations += 1
 
