@@ -223,10 +223,10 @@ class UNet3DTrainer:
                     f'Maximum number of iterations {self.max_num_iterations} exceeded. Finishing training...')
                 return True
 
-            print(torch_stds)
+            
 
             self.num_iterations += 1
-
+        print('torch stds:', torch_stds)
         return False
 
     def validate(self, val_loader):
