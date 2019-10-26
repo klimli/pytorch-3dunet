@@ -169,8 +169,8 @@ class UNet3DTrainer:
             # print('Tensor flatten std: ',input.reshape(-1).std(dim=-1))
             print('torch.std() method: ', torch.std(input))
             print('max and min: ', torch.max(input),torch.min(input))
-
-            if torch.std(input).item() < 1.4901e-07:
+#1.4901e-07
+            if torch.std(input).item() < 1:
                 print('std soooo small')
             train_losses.update(loss.item(), self._batch_size(input))
 
