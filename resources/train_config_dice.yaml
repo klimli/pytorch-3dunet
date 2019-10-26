@@ -74,7 +74,7 @@ loaders:
     - 'resources/P99B99.h5'
     - 'resources/P10B10.h5'
     - 'resources/P20B20.h5'
-    - 'resources/P30B30.h5'
+    - 'resources/P31B31.h5'
     - 'resources/P40B40.h5'
 
   # paths to the validation datasets
