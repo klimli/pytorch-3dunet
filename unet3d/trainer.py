@@ -152,7 +152,6 @@ class UNet3DTrainer:
 
         # sets the model in training mode
         self.model.train()
-        torch_stds = []
         for i, t in enumerate(train_loader):
             if i%100==0:
                 self.logger.info(
@@ -170,9 +169,9 @@ class UNet3DTrainer:
             # print('Tensor flatten std: ',input.reshape(-1).std(dim=-1))
             print('torch.std() method: ', torch.std(input))
             print('max and min: ', torch.max(input),torch.min(input))
-            torch_stds.append(torch.std(input))
 
-
+            if torch.std(input) > 1.4901e-07:
+                print('std not so small')
             train_losses.update(loss.item(), self._batch_size(input))
 
             # compute gradients and update parameters
@@ -226,7 +225,6 @@ class UNet3DTrainer:
             
 
             self.num_iterations += 1
-        print('torch stds:', torch_stds)
         return False
 
     def validate(self, val_loader):
