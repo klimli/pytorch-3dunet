@@ -72,39 +72,10 @@ loaders:
   # paths to the training datasets
   train_path:
     - 'resources/P99B99.h5'
-    - 'resources/P147B147.h5'
-    - 'resources/P140B140.h5'
-    - 'resources/P55B55.h5'
-    - 'resources/P105B105.h5'
-    - 'resources/P146B146.h5'
-    - 'resources/P133B133.h5'
-    - 'resources/P111B111.h5'
-    - 'resources/P44B44.h5'
-    - 'resources/P4B4.h5'
-    - 'resources/P118B118.h5'
-    - 'resources/P39B39.h5'
-    - 'resources/P134B134.h5'
-    - 'resources/P83B83.h5'
-    - 'resources/P21B21.h5'
-    - 'resources/P56B56.h5'
-    - 'resources/P106B106.h5'
-    - 'resources/P122B122.h5'
-    - 'resources/P78B78.h5'
-    - 'resources/P72B72.h5'
-    - 'resources/P47B47.h5'
-
-
-
-
-
 
   # paths to the validation datasets
   val_path:
-    - 'resources/P114B114.h5'
-    - 'resources/P82B82.h5'
-    - 'resources/P51B51.h5'
-    - 'resources/P3B3.h5'
-    - 'resources/P79B79.h5'
+    - 'resources/P99B99.h5'
 
   # how many subprocesses to use for data loading
   num_workers: 8
