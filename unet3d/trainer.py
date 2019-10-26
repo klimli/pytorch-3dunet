@@ -164,6 +164,10 @@ class UNet3DTrainer:
             output, loss = self._forward_pass(input, target, weight)
             print("training input shape: ",input.shape)
             print("training input std?: ", input.std(dim=1))
+            print("training input mean?: ", input.mean(dim=1))
+            print("training input std?: ", input.std)
+
+
             train_losses.update(loss.item(), self._batch_size(input))
 
             # compute gradients and update parameters
