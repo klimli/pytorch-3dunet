@@ -338,6 +338,8 @@ class UNet3DTrainer:
             else:
                 img_sources[name] = batch.data.cpu().numpy()
 
+        print("img source- lista patchy? : ", img_sources)
+
         for name, batch in img_sources.items():
             for tag, image in self._images_from_batch(name, batch):
                 self.writer.add_image(tag, image, self.num_iterations, dataformats='HW')
