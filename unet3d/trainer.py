@@ -166,7 +166,9 @@ class UNet3DTrainer:
             print('max and min: ', torch.max(input),torch.min(input))
 
 
-            if torch.std(input).item() > 1.4901e-07:
+            # if torch.std(input).item() > 1.4901e-07:
+            if torch.isfinite(input).squeeze():
+
                 train_losses.update(loss.item(), self._batch_size(input))
 
                 # compute gradients and update parameters
@@ -237,7 +239,8 @@ class UNet3DTrainer:
                     
 
                     input, target, weight = self._split_training_batch(t)
-                    if torch.std(input).item() > 1.4901e-07:
+                    if torch.isfinite(input).squeeze():
+                        torch.isfinite(torch.tensor([3,])).squeeze():
                         output, loss = self._forward_pass(input, target, weight)
                         val_losses.update(loss.item(), self._batch_size(input))
 
