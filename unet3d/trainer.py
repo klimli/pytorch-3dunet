@@ -166,13 +166,13 @@ class UNet3DTrainer:
             print('max and min: ', torch.max(input),torch.min(input))
 
 
-            # if torch.std(input).item() > 1.4901e-07:
-            train_losses.update(loss.item(), self._batch_size(input))
+            if torch.std(input).item() > 1.4901e-07:
+                train_losses.update(loss.item(), self._batch_size(input))
 
-            # compute gradients and update parameters
-            self.optimizer.zero_grad()
-            loss.backward()
-            self.optimizer.step()
+                # compute gradients and update parameters
+                self.optimizer.zero_grad()
+                loss.backward()
+                self.optimizer.step()
 
             if self.num_iterations % self.validate_after_iters == 0:
                 # evaluate on validation set
