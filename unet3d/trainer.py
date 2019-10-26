@@ -162,7 +162,7 @@ class UNet3DTrainer:
             input, target, weight = self._split_training_batch(t)
 
             output, loss = self._forward_pass(input, target, weight)
-
+            print("training input shape: ",input.shape)
             train_losses.update(loss.item(), self._batch_size(input))
 
             # compute gradients and update parameters
@@ -377,8 +377,7 @@ class UNet3DTrainer:
     @staticmethod
     def _normalize_img(img):
         print("image std: ",np.std(img))
-        print('img wymiary: ',img.shape)
-        print('img wymiary: ',img.size)
+        print('img shape: ',img.shape)
 
         return ((img - np.min(img))) / (np.ptp(img)+1e-6)  # those +1+1 remove warning about NaN in the input
                                                         #without them np.ptp(img) can output 0 when there is only background on the input image
