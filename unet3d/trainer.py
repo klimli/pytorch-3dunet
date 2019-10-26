@@ -170,8 +170,8 @@ class UNet3DTrainer:
             print('torch.std() method: ', torch.std(input))
             print('max and min: ', torch.max(input),torch.min(input))
 
-            if torch.std(input) > 1.4901e-07:
-                print('std not so small')
+            if torch.std(input)[0] < 1.4901e-07:
+                print('std soooo small')
             train_losses.update(loss.item(), self._batch_size(input))
 
             # compute gradients and update parameters
