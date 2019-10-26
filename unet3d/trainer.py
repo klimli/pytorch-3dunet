@@ -167,6 +167,7 @@ class UNet3DTrainer:
             print("training input mean?: ", input.mean(dim=1))
             print("training input std?: ", input.std)
             print('Tensor flatten: ',input.reshape(-1))
+            print('Tensor flatten std: ',input.reshape(-1).std(dim=1))
 
 
             train_losses.update(loss.item(), self._batch_size(input))
