@@ -162,12 +162,12 @@ class UNet3DTrainer:
             input, target, weight = self._split_training_batch(t)
 
             output, loss = self._forward_pass(input, target, weight)
-            print("training input shape: ",input.shape)
-            print("training input std?: ", input.std(dim=1))
-            print("training input mean?: ", input.mean(dim=1))
-            print("training input std?: ", input.std)
-            print('Tensor flatten: ',input.reshape(-1))
-            print('Tensor flatten std: ',input.reshape(-1).std(dim=-1))
+            # print("training input shape: ",input.shape)
+            # print("training input std?: ", input.std(dim=1))
+            # print("training input mean?: ", input.mean(dim=1))
+            # print("training input std?: ", input.std)
+            # print('Tensor flatten: ',input.reshape(-1))
+            # print('Tensor flatten std: ',input.reshape(-1).std(dim=-1))
             print('torch.std() method: ', torch.std(input))
             print('max and min: ', torch.max(input),torch.min(input))
 
