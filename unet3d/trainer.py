@@ -168,6 +168,7 @@ class UNet3DTrainer:
             print("training input std?: ", input.std)
             print('Tensor flatten: ',input.reshape(-1))
             print('Tensor flatten std: ',input.reshape(-1).std(dim=-1))
+            print('torch.std() method: ', torch.std(input)
 
 
             train_losses.update(loss.item(), self._batch_size(input))
