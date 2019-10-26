@@ -349,8 +349,8 @@ class UNet3DTrainer:
             else:
                 img_sources[name] = batch.data.cpu().numpy()
 
-        print("img source- lista patchy? : ", img_sources['inputs'])
-        print('img source inputs len: ', len(img_sources))
+        # print("img source- lista patchy? : ", img_sources['inputs'])
+        # print('img source inputs len: ', len(img_sources))
 
         for name, batch in img_sources.items():
             for tag, image in self._images_from_batch(name, batch):
@@ -385,8 +385,8 @@ class UNet3DTrainer:
 
     @staticmethod
     def _normalize_img(img):
-        print("image std: ",np.std(img))
-        print('img shape: ',img.shape)
+        # print("image std: ",np.std(img))
+        # print('img shape: ',img.shape)
 
         return ((img - np.min(img))) / (np.ptp(img)+1e-6)  # those +1+1 remove warning about NaN in the input
                                                         #without them np.ptp(img) can output 0 when there is only background on the input image
