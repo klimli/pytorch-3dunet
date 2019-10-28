@@ -162,19 +162,18 @@ class UNet3DTrainer:
 
             output, loss = self._forward_pass(input, target, weight)
 
-            print('torch.std() method: ', torch.std(input))
-            print('max and min: ', torch.max(input),torch.min(input))
+            # print('torch.std() method: ', torch.std(input))
+            # print('max and min: ', torch.max(input),torch.min(input))
 
 
             # if torch.std(input).item() > 1.4901e-07:
-            if torch.isfinite(input).squeeze():
 
-                train_losses.update(loss.item(), self._batch_size(input))
+            train_losses.update(loss.item(), self._batch_size(input))
 
-                # compute gradients and update parameters
-                self.optimizer.zero_grad()
-                loss.backward()
-                self.optimizer.step()
+            # compute gradients and update parameters
+            self.optimizer.zero_grad()
+            loss.backward()
+            self.optimizer.step()
 
             if self.num_iterations % self.validate_after_iters == 0:
                 # evaluate on validation set
@@ -239,13 +238,11 @@ class UNet3DTrainer:
                     
 
                     input, target, weight = self._split_training_batch(t)
-                    if torch.isfinite(input).squeeze():
-                        torch.isfinite(torch.tensor([3,])).squeeze():
-                        output, loss = self._forward_pass(input, target, weight)
-                        val_losses.update(loss.item(), self._batch_size(input))
+                    output, loss = self._forward_pass(input, target, weight)
+                    val_losses.update(loss.item(), self._batch_size(input))
 
-                        eval_score = self.eval_criterion(output, target)
-                        val_scores.update(eval_score.item(), self._batch_size(input))
+                    eval_score = self.eval_criterion(output, target)
+                    val_scores.update(eval_score.item(), self._batch_size(input))
 
                     if self.validate_iters is not None and self.validate_iters <= i:
                         # stop validation
